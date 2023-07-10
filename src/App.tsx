@@ -1,13 +1,15 @@
 import React from "react";
-import "./App.css";
 import { extendTheme, ChakraProvider } from "@chakra-ui/react";
-import NavBar from "./components/NavBar/NavBar";
 import "@fontsource/vollkorn/400.css";
 import "@fontsource/vollkorn/500.css";
 import "@fontsource/vollkorn/600.css";
 import "@fontsource/vollkorn/700.css";
 import "@fontsource/vollkorn/800.css";
 import "@fontsource/vollkorn/900.css";
+import "./App.css";
+
+import NavBar from "./components/NavBar/NavBar";
+import Homepage from "./components/Homepage/Homepage";
 
 const colors = {
   brand: {
@@ -36,6 +38,7 @@ function App() {
     <ChakraProvider theme={theme}>
       <div>
         <NavBar />
+        <Homepage />
       </div>
     </ChakraProvider>
   );
