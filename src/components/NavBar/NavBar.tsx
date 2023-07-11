@@ -19,8 +19,6 @@ function NavBar() {
         />
       </Box>
       <Spacer />
-      <Text fontSize='2rem'>Reed's Reads</Text>
-      <Spacer />
       <Input
         width='20rem'
         placeholder='Search for your next great adventure...'
@@ -29,6 +27,7 @@ function NavBar() {
         borderColor='brand.black_olive'
         _placeholder={{ color: "brand.black_olive" }}
       />
+      <Spacer />
     </Flex>
   );
 }
