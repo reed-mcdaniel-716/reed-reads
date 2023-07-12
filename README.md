@@ -2,11 +2,20 @@
 
 A React + Redux book finding app
 
-# Design
+## Overview
+
+- This is a front-end webapp for exploring books using the [Google Books API](https://developers.google.com/books/docs/overview)
+
+## Design
 
 Click [here](https://www.figma.com/file/KWs1ld5vUBi7aF6cVTQjka/Reed-Reads?type=design&node-id=2%3A2&mode=design&t=UdQp24kK2lIf1x5M-1) for Figma design for this app
 
-## Available Scripts
+## Technologies used
+
+- Chakra UI for styling and UI components
+- React + Redux + React Router for core funtionality
+
+### Available Scripts
 
 In the project directory, you can run:
 
