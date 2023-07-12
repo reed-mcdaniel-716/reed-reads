@@ -7,6 +7,7 @@ function Homepage() {
     <Center id='homepage_background' h='100vh' w='full'>
       <Flex id='text_frame'>
         <VStack id='text_box'>
+          {/* I want this text right justified... */}
           <Text fontSize='4xl' fontWeight={800}>
             Reed's Reads
           </Text>

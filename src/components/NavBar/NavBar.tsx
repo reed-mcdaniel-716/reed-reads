@@ -1,5 +1,6 @@
 import React from "react";
-import { Box, Flex, Image, Input, Spacer, Text } from "@chakra-ui/react";
+import { Box, Flex, Image, Spacer } from "@chakra-ui/react";
+import SearchBar from "../SeachBar/SearchBar";
 
 function NavBar() {
   return (
@@ -19,14 +20,9 @@ function NavBar() {
         />
       </Box>
       <Spacer />
-      <Input
-        width='20rem'
-        placeholder='Search for your next great adventure...'
-        backgroundColor='brand.ash_gray'
-        color='brand.black_olive'
-        borderColor='brand.black_olive'
-        _placeholder={{ color: "brand.black_olive" }}
-      />
+      <Box>
+        <SearchBar />
+      </Box>
       <Spacer />
     </Flex>
   );
