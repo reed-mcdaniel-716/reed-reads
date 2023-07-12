@@ -1,6 +1,4 @@
-# Reed's Reads
-
-A React + Redux book finding app
+# Reed's Reads: A book finding app
 
 ## Overview
 
