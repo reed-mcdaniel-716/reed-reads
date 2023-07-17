@@ -1,29 +1,29 @@
 type IndustryIdentifiers = {
-  type: String;
-  identifier: String;
+  type: string;
+  identifier: string;
 };
 
 type ImageLinks = {
-  smallThumbnail?: String;
-  thumbnail?: String;
-  small?: String;
-  medium?: String;
-  large?: String;
-  extraLarge?: String;
+  smallThumbnail?: string;
+  thumbnail?: string;
+  small?: string;
+  medium?: string;
+  large?: string;
+  extraLarge?: string;
 };
 
-export type GoogleBookVolumeDetails = {
-  id: String;
-  title: String;
-  subTitle: String;
+export type GoogleBookVolume = {
+  id: string;
+  title: string;
+  subTitle: string;
   authors: String[];
-  publisher: String;
-  publishedDate: String;
+  publisher: string;
+  publishedDate: string;
   industryIdentifiers: IndustryIdentifiers[];
-  description: String;
+  description: string;
   pageCount: Number;
   categories: String[];
   imageLinks: ImageLinks;
-  canonicalVolumeLink: String;
-  language: String;
+  canonicalVolumeLink: string;
+  language: string;
 };
