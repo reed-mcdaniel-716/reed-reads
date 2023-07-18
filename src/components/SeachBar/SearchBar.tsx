@@ -1,13 +1,20 @@
 import React, { useState } from "react";
 import { Input, InputGroup, Button } from "@chakra-ui/react";
+import { fetchBooksFromApi } from "../../utils/apiHelpers";
 
 function NavBar() {
-  const handleClick = () => {};
   const [searchString, setSeachString] = useState("");
 
   const handleSearchChange = (inputString: string) => {
     setSeachString(inputString);
   };
+
+  const handleClick = () => {
+    // testing api call; will move later
+    fetchBooksFromApi(searchString);
+    setSeachString("");
+  };
+
   return (
     <InputGroup display='flex' alignItems='center' size='md'>
       <Input

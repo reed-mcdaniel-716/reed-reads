@@ -38,7 +38,7 @@ const fetchBooks = createAsyncThunk(
   async (_, thunkApi) => {
     const state = thunkApi.getState() as SearchState;
     const searchString = state.searchString;
-    return fetchBooksFromApi(searchString);
+    return await fetchBooksFromApi(searchString);
   }
 );
 

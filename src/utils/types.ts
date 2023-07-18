@@ -1,9 +1,9 @@
-type IndustryIdentifiers = {
+export type IndustryIdentifier = {
   type: string;
   identifier: string;
 };
 
-type ImageLinks = {
+export type ImageLink = {
   smallThumbnail?: string;
   thumbnail?: string;
   small?: string;
@@ -19,11 +19,11 @@ export type GoogleBookVolume = {
   authors: String[];
   publisher: string;
   publishedDate: string;
-  industryIdentifiers: IndustryIdentifiers[];
+  industryIdentifiers: IndustryIdentifier[];
   description: string;
   pageCount: Number;
   categories: String[];
-  imageLinks: ImageLinks;
+  imageLinks: ImageLink;
   canonicalVolumeLink: string;
   language: string;
 };
