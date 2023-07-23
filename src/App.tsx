@@ -7,6 +7,8 @@ import "@fontsource/vollkorn/700.css";
 import "@fontsource/vollkorn/800.css";
 import "@fontsource/vollkorn/900.css";
 import "./App.css";
+import { store } from "./store";
+import { Provider } from "react-redux";
 
 import NavBar from "./components/NavBar/NavBar";
 import Homepage from "./components/Homepage/Homepage";
@@ -35,12 +37,14 @@ const theme = extendTheme({
 
 function App() {
   return (
-    <ChakraProvider theme={theme}>
-      <div>
-        <NavBar />
-        <Homepage />
-      </div>
-    </ChakraProvider>
+    <Provider store={store}>
+      <ChakraProvider theme={theme}>
+        <div>
+          <NavBar />
+          <Homepage />
+        </div>
+      </ChakraProvider>
+    </Provider>
   );
 }
 

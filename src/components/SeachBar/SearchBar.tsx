@@ -1,18 +1,24 @@
-import React, { useState } from "react";
 import { Input, InputGroup, Button } from "@chakra-ui/react";
-import { fetchBooksFromApi } from "../../utils/apiHelpers";
+import { useAppSelector, useAppDispatch } from "../../hooks";
+import { setSearchString, clearSearchString } from "./searchSlice";
 
 function NavBar() {
-  const [searchString, setSeachString] = useState("");
+  // The `state` arg is correctly typed as `RootState` already
+  const searchString = useAppSelector((state) => state.search.searchString);
+  const dispatch = useAppDispatch();
+
+  //const [searchString, setSeachString] = useState("");
 
   const handleSearchChange = (inputString: string) => {
-    setSeachString(inputString);
+    // TODO: figure out why dispatching action is not updating state...
+    const stuff = dispatch(setSearchString(inputString));
+    console.log(`stuff:`, stuff);
   };
 
   const handleClick = () => {
     // testing api call; will move later
-    fetchBooksFromApi(searchString);
-    setSeachString("");
+    //fetchBooksFromApi(searchString);
+    dispatch(clearSearchString());
   };
 
   return (

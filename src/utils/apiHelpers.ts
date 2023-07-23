@@ -10,7 +10,7 @@ export const baseUrl = "https://www.googleapis.com/books/v1/volumes";
 // construct an array of GoogleBookVolume from API response
 export const booksFromResults = (results: any[]): GoogleBookVolume[] => {
   let industryIds: IndustryIdentifier[] = [];
-  let imgLinks: ImageLink[] = [];
+  let imgLink: ImageLink;
   let bookVolumes: GoogleBookVolume[] = [];
 
   results.forEach((result) => {
@@ -22,19 +22,14 @@ export const booksFromResults = (results: any[]): GoogleBookVolume[] => {
       industryIds.push(newIndustryId);
     });
 
-    result.volumeInfo.imageLinks.forEach((link: any) => {
-      const newImageLink = {
-        smallThumbnail: link.smallThumbnail,
-        thumbnail: link.thumbnail,
-        small: link.small,
-        medium: link.medium,
-        large: link.large,
-        extraLarge: link.extraLarge,
-      } as ImageLink;
-      imgLinks.push(newImageLink);
-    });
-
-    // finish volume definition
+    imgLink = {
+      smallThumbnail: result.volumeInfo.imageLinks.smallThumbnail,
+      thumbnail: result.volumeInfo.imageLinks.thumbnail,
+      small: result.volumeInfo.imageLinks.small,
+      medium: result.volumeInfo.imageLinks.medium,
+      large: result.volumeInfo.imageLinks.large,
+      extraLarge: result.volumeInfo.imageLinks.extraLarge,
+    } as ImageLink;
     const newVolume = {
       id: result.id,
       title: result.volumeInfo.title,
@@ -43,6 +38,12 @@ export const booksFromResults = (results: any[]): GoogleBookVolume[] => {
       publisher: result.volumeInfo.publisher,
       publishedDate: result.volumeInfo.publishedDate,
       industryIdentifiers: industryIds,
+      description: result.volumeInfo.description,
+      pageCount: result.volumeInfo.pageCount,
+      categories: result.volumeInfo.categories,
+      imageLinks: imgLink,
+      canonicalVolumeLink: result.volumeInfo.canonicalVolumeLink,
+      language: result.volumeInfo.language,
     } as GoogleBookVolume;
     bookVolumes.push(newVolume);
   });
