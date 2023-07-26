@@ -1,24 +1,20 @@
 import { Input, InputGroup, Button } from "@chakra-ui/react";
-import { useAppSelector, useAppDispatch } from "../../hooks";
-import { setSearchString, clearSearchString } from "./searchSlice";
+import { useAppDispatch } from "../../hooks";
+import React, { useState } from "react";
 
 function NavBar() {
-  // The `state` arg is correctly typed as `RootState` already
-  const searchString = useAppSelector((state) => state.search.searchString);
   const dispatch = useAppDispatch();
 
-  //const [searchString, setSeachString] = useState("");
+  const [uISearchString, setUiSeachString] = useState("");
 
   const handleSearchChange = (inputString: string) => {
-    // TODO: figure out why dispatching action is not updating state...
-    const stuff = dispatch(setSearchString(inputString));
-    console.log(`stuff:`, stuff);
+    setUiSeachString(inputString);
   };
 
   const handleClick = () => {
-    // testing api call; will move later
-    //fetchBooksFromApi(searchString);
-    dispatch(clearSearchString());
+    // TODO: figure out why dispatching action is not updating state...
+    dispatch({ type: "search/fetchBooks", payload: uISearchString });
+    setUiSeachString("");
   };
 
   return (
@@ -31,7 +27,7 @@ function NavBar() {
         borderColor='brand.black_olive'
         _placeholder={{ color: "brand.black_olive" }}
         marginRight='1rem'
-        value={searchString}
+        value={uISearchString}
         onChange={(e) => handleSearchChange(e.target.value)}
       />
       <Button

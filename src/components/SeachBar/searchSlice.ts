@@ -1,4 +1,4 @@
-import { createSlice, createAction, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { GoogleBookVolume } from "../../utils/types";
 import { fetchBooksFromApi } from "../../utils/apiHelpers";
 
@@ -15,40 +15,30 @@ const initialSearchState: SearchState = {
   errorMessage: "",
 } as SearchState;
 
-// ACTIONS
-const clearSearchString = createAction("clearSearchString");
-
-const setSearchString = createAction(
-  "setSearchString",
-  function prepare(inputString: string) {
-    return {
-      payload: {
-        searchString: inputString,
-      },
-    };
-  }
-);
-
 // THUNKS
 
-const fetchBooksThunk = createAsyncThunk("fetchBooks", async (_, thunkApi) => {
-  const state = thunkApi.getState() as SearchState;
-  const searchString = state.searchString;
-  const newBookVolumes = await fetchBooksFromApi(searchString);
-  return newBookVolumes;
-});
+const fetchBooksThunk = createAsyncThunk(
+  "search/fetchBooks",
+  async (searchString: string, thunkApi) => {
+    // figure out why this isn't being triggered
+    console.log("triggered thunk...");
+    const newBookVolumes = await fetchBooksFromApi(searchString);
+    return { newBookVolumes: newBookVolumes, searchString: searchString };
+  }
+);
 
 // SLICE
 const searchSlice = createSlice({
   name: "search",
   initialState: initialSearchState,
   reducers: {
-    [clearSearchString.type]: (state) => {
+    clearSearchString: (state) => {
+      console.log("clear string reducer");
       return { ...state, searchString: "" };
     },
-    [setSearchString.type]: (state, action) => {
-      console.log(`setting search string to ${action.payload.searchString}`);
-      return { ...state, searchString: action.payload.searchString };
+    setSearchString: (state, action) => {
+      console.log(`setting search string to ${action.payload}`);
+      return { ...state, searchString: action.payload };
     },
   },
   extraReducers: (builder) => {
@@ -62,7 +52,8 @@ const searchSlice = createSlice({
       .addCase(fetchBooksThunk.fulfilled, (state, action) => {
         return {
           ...state,
-          bookVolumes: action.payload,
+          bookVolumes: action.payload.newBookVolumes,
+          searchString: action.payload.searchString,
         };
       })
       .addCase(fetchBooksThunk.rejected, (state) => {
@@ -76,5 +67,4 @@ const searchSlice = createSlice({
 });
 
 // EXPORTS
-export { clearSearchString, setSearchString };
 export default searchSlice.reducer;
