@@ -1,15 +1,72 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import ErrorPage from "./components/Error/ErrorPage";
+import reportWebVitals from "./reportWebVitals";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { extendTheme, ChakraProvider } from "@chakra-ui/react";
+import "@fontsource/vollkorn/400.css";
+import "@fontsource/vollkorn/500.css";
+import "@fontsource/vollkorn/600.css";
+import "@fontsource/vollkorn/700.css";
+import "@fontsource/vollkorn/800.css";
+import "@fontsource/vollkorn/900.css";
+import "./App.css";
+import { store } from "./store";
+import { Provider } from "react-redux";
+
+import NavBarWrapper from "./components/NavBar/NavBarWrapper";
+
+const colors = {
+  brand: {
+    seasalt: "#F8F8F8ff",
+    brown_sugar: "#B25F3Bff",
+    ash_gray: "#B8BBADff",
+    chamoisee: "#93765Cff",
+    viridian: "#1D7E62ff",
+    black_olive: "#383526ff",
+    gamboge: "#E9A141ff",
+  },
+};
+
+const fonts = {
+  heading: `'Vollkorn', sans-serif`,
+  body: `'Vollkorn', sans-serif`,
+};
+
+const theme = extendTheme({
+  colors: { ...colors },
+  fonts: { ...fonts },
+});
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <NavBarWrapper />,
+    children: [
+      {
+        path: "/",
+        element: <App />,
+      },
+      {
+        path: "*",
+        element: <ErrorPage />,
+      },
+    ],
+  },
+]);
 
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+  document.getElementById("root") as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <ChakraProvider theme={theme}>
+      <Provider store={store}>
+        <RouterProvider router={router} />
+      </Provider>
+    </ChakraProvider>
   </React.StrictMode>
 );
 

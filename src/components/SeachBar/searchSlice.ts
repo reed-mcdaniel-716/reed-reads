@@ -17,11 +17,9 @@ const initialSearchState: SearchState = {
 
 // THUNKS
 
-const fetchBooksThunk = createAsyncThunk(
+export const fetchBooksThunk = createAsyncThunk(
   "search/fetchBooks",
-  async (searchString: string, thunkApi) => {
-    // figure out why this isn't being triggered
-    console.log("triggered thunk...");
+  async (searchString: string) => {
     const newBookVolumes = await fetchBooksFromApi(searchString);
     return { newBookVolumes: newBookVolumes, searchString: searchString };
   }
@@ -33,11 +31,9 @@ const searchSlice = createSlice({
   initialState: initialSearchState,
   reducers: {
     clearSearchString: (state) => {
-      console.log("clear string reducer");
       return { ...state, searchString: "" };
     },
     setSearchString: (state, action) => {
-      console.log(`setting search string to ${action.payload}`);
       return { ...state, searchString: action.payload };
     },
   },
@@ -46,7 +42,6 @@ const searchSlice = createSlice({
       .addCase(fetchBooksThunk.pending, (state) => {
         return {
           ...state,
-          bookVolumes: [] as GoogleBookVolume[],
         };
       })
       .addCase(fetchBooksThunk.fulfilled, (state, action) => {
@@ -59,7 +54,6 @@ const searchSlice = createSlice({
       .addCase(fetchBooksThunk.rejected, (state) => {
         return {
           ...state,
-          bookVolumes: [] as GoogleBookVolume[],
           errorMessage: "failed to fetch books",
         };
       });

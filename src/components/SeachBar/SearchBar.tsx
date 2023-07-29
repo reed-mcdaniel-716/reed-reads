@@ -1,6 +1,7 @@
 import { Input, InputGroup, Button } from "@chakra-ui/react";
 import { useAppDispatch } from "../../hooks";
 import React, { useState } from "react";
+import { fetchBooksThunk } from "../SeachBar/searchSlice";
 
 function NavBar() {
   const dispatch = useAppDispatch();
@@ -12,8 +13,7 @@ function NavBar() {
   };
 
   const handleClick = () => {
-    // TODO: figure out why dispatching action is not updating state...
-    dispatch({ type: "search/fetchBooks", payload: uISearchString });
+    dispatch(fetchBooksThunk(uISearchString));
     setUiSeachString("");
   };
 

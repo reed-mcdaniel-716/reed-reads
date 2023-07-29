@@ -1,0 +1,32 @@
+:root {
+  font-family: 'Vollkorn', sans-serif;
+  font-size: 16px;
+  --seasalt: #F8F8F8ff;
+  --brown-sugar: #B25F3Bff;
+  --ash-gray: #B8BBADff;
+  --chamoisee: #93765Cff;
+  --viridian: #1D7E62ff;
+  --black-olive: #383526ff;
+  --gamboge: #E9A141ff;
+}
+
+#error_background {
+  background-image: url("../../../public/assets/ranurte-OVz8bPZfTPc-unsplash.jpg") !important;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+#text_frame {
+  background-color: var(--brown-sugar);
+  width: 60%;
+  height: 60vh;
+  border-radius: 0.625rem;
+}
+
+#text_box {
+  background-color: var(--seasalt);
+  width: 90%;
+  height: 80%;
+  border-radius: 0.625rem;
+}
