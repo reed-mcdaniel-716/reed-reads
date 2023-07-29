@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Button, Flex, Image, Spacer, HStack } from "@chakra-ui/react";
-import SearchBar from "../SeachBar/SearchBar";
+import SearchBar from "../Search/SearchBar";
 import { useNavigate } from "react-router-dom";
 import "./NavBar.css";
 

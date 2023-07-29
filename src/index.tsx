@@ -1,8 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import App from "./App";
-import ErrorPage from "./components/Error/ErrorPage";
 import reportWebVitals from "./reportWebVitals";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { extendTheme, ChakraProvider } from "@chakra-ui/react";
@@ -16,7 +14,10 @@ import "./App.css";
 import { store } from "./store";
 import { Provider } from "react-redux";
 
+import App from "./App";
+import ErrorPage from "./components/Error/ErrorPage";
 import NavBarWrapper from "./components/NavBar/NavBarWrapper";
+import SearchResults from "./components/Search/SearchResults";
 
 const colors = {
   brand: {
@@ -48,6 +49,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <App />,
+      },
+      {
+        path: "/searchResults/:searchQuery",
+        element: <SearchResults />,
       },
       {
         path: "*",

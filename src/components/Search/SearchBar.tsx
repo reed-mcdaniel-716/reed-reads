@@ -1,10 +1,12 @@
 import { Input, InputGroup, Button } from "@chakra-ui/react";
 import { useAppDispatch } from "../../hooks";
 import React, { useState } from "react";
-import { fetchBooksThunk } from "../SeachBar/searchSlice";
+import { fetchBooksThunk } from "../Search/searchSlice";
+import { useNavigate } from "react-router-dom";
 
 function NavBar() {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const [uISearchString, setUiSeachString] = useState("");
 
@@ -13,7 +15,9 @@ function NavBar() {
   };
 
   const handleClick = () => {
+    // TODO: handle case where search string is empty
     dispatch(fetchBooksThunk(uISearchString));
+    navigate(`/searchResults/${uISearchString}`);
     setUiSeachString("");
   };
 
