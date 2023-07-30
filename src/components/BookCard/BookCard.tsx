@@ -13,10 +13,10 @@ import {
 import { GoogleBookVolume } from "../../utils/types";
 import { useNavigate, useParams } from "react-router-dom";
 
-interface ResultProps {
+interface BookCardProps {
   bookVolume: GoogleBookVolume;
 }
-function Result(props: ResultProps) {
+function BookCard(props: BookCardProps) {
   const navigate = useNavigate();
   const { searchQuery } = useParams();
   const bookVolume = props.bookVolume;
@@ -35,6 +35,9 @@ function Result(props: ResultProps) {
           objectFit='scale-down'
           src={bookVolume.imageLinks.thumbnail}
           alt={bookVolume.title}
+          fallbackSrc={"/assets/ranurte-OVz8bPZfTPc-unsplash.jpg"}
+          boxSize={"14rem"}
+          padding={"1rem"}
         />
         <CardFooter>
           <Button
@@ -42,7 +45,7 @@ function Result(props: ResultProps) {
             color='brand.seasalt'
             onClick={handleClickDetails}
           >
-            Buy Latte
+            More Details...
           </Button>
         </CardFooter>
       </Stack>
@@ -66,4 +69,4 @@ function Result(props: ResultProps) {
   );
 }
 
-export default Result;
+export default BookCard;

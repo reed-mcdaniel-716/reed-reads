@@ -18,7 +18,7 @@ import App from "./App";
 import ErrorPage from "./components/Error/ErrorPage";
 import NavBarWrapper from "./components/NavBar/NavBarWrapper";
 import SearchResults from "./components/Search/SearchResults";
-import ResultDetails from "./components/Search/ResultDetails";
+import ResultDetails from "./components/BookDetail/BookDetail";
 
 const colors = {
   brand: {

@@ -23,12 +23,12 @@ export const booksFromResults = (results: any[]): GoogleBookVolume[] => {
     });
 
     imgLink = {
-      smallThumbnail: result.volumeInfo.imageLinks.smallThumbnail,
-      thumbnail: result.volumeInfo.imageLinks.thumbnail,
-      small: result.volumeInfo.imageLinks.small,
-      medium: result.volumeInfo.imageLinks.medium,
-      large: result.volumeInfo.imageLinks.large,
-      extraLarge: result.volumeInfo.imageLinks.extraLarge,
+      smallThumbnail: result.volumeInfo.imageLinks?.smallThumbnail,
+      thumbnail: result.volumeInfo.imageLinks?.thumbnail,
+      small: result.volumeInfo.imageLinks?.small,
+      medium: result.volumeInfo.imageLinks?.medium,
+      large: result.volumeInfo.imageLinks?.large,
+      extraLarge: result.volumeInfo.imageLinks?.extraLarge,
     } as ImageLink;
     const newVolume = {
       id: result.id,

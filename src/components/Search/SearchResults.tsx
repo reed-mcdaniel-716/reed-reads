@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { Flex, HStack, VStack, Text } from "@chakra-ui/react";
 import { useAppSelector } from "../../hooks";
 import "./SearchResults.css";
-import Result from "./Result";
+import BookCard from "../BookCard/BookCard";
 import { GoogleBookVolume } from "../../utils/types";
 
 function SearchResults() {
@@ -13,7 +13,7 @@ function SearchResults() {
     (state) => state.search.bookVolumes
   );
   const bookCards = bookVolumes.map((volume: GoogleBookVolume) => {
-    return <Result bookVolume={volume} />;
+    return <BookCard bookVolume={volume} />;
   });
   return (
     <HStack bg='brand.ash_gray' align={"top"}>

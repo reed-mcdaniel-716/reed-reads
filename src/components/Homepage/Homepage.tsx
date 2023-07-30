@@ -14,6 +14,21 @@ function Homepage() {
           <Text fontSize='2xl' fontStyle='italic'>
             Your next great adventure awaits...
           </Text>
+          <Text fontSize='xs' fontStyle='italic'>
+            background photo by{" "}
+            <a
+              title='upsplash artist profile'
+              href='https://unsplash.com/de/@ranurte?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText'
+            >
+              Ranurte on{" "}
+            </a>
+            <a
+              title='upsplash library search'
+              href='https://unsplash.com/s/photos/library?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText'
+            >
+              Unsplash
+            </a>
+          </Text>
         </VStack>
       </Flex>
     </Center>
