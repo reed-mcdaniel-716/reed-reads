@@ -18,6 +18,7 @@ import App from "./App";
 import ErrorPage from "./components/Error/ErrorPage";
 import NavBarWrapper from "./components/NavBar/NavBarWrapper";
 import SearchResults from "./components/Search/SearchResults";
+import ResultDetails from "./components/Search/ResultDetails";
 
 const colors = {
   brand: {
@@ -53,6 +54,10 @@ const router = createBrowserRouter([
       {
         path: "/searchResults/:searchQuery",
         element: <SearchResults />,
+      },
+      {
+        path: "/searchResults/:searchQuery/:bookId/details",
+        element: <ResultDetails />,
       },
       {
         path: "*",
