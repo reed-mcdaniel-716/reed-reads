@@ -1,5 +1,7 @@
 # Reed's Reads: A book finding app
 
+Deployed [here](https://elegant-melba-99379c.netlify.app/) using Netlify
+
 ## Overview
 
 - This is a front-end webapp for exploring books using the [Google Books API](https://developers.google.com/books/docs/overview)
