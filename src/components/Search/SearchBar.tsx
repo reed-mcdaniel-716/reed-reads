@@ -21,6 +21,14 @@ function NavBar() {
     setUiSeachString("");
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      dispatch(fetchBooksThunk(uISearchString));
+      navigate(`/searchResults/${uISearchString}`);
+      setUiSeachString("");
+    }
+  };
+
   return (
     <InputGroup display='flex' alignItems='center' size='md'>
       <Input
@@ -33,6 +41,7 @@ function NavBar() {
         marginRight='1rem'
         value={uISearchString}
         onChange={(e) => handleSearchChange(e.target.value)}
+        onKeyDown={(e) => handleKeyDown(e)}
       />
       <Button
         h='1.75rem'

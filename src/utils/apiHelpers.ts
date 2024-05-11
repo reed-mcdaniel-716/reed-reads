@@ -13,6 +13,9 @@ export const booksFromResults = (results: any[]): GoogleBookVolume[] => {
   let imgLink: ImageLink;
   let bookVolumes: GoogleBookVolume[] = [];
 
+  if (results.length === 0) {
+    return bookVolumes;
+  }
   results.forEach((result) => {
     result.volumeInfo.industryIdentifiers.forEach((id: any) => {
       const newIndustryId = {
@@ -64,12 +67,10 @@ export const fetchBooksFromApi = async (
 
   try {
     const response = await axios(config);
-    console.log(response);
     const bookResults = response.data.items;
     const bookVolumes = booksFromResults(bookResults);
     return bookVolumes;
   } catch (error) {
-    console.error(error);
     return [] as GoogleBookVolume[];
   }
 };

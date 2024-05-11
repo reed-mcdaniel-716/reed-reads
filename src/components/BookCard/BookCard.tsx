@@ -15,6 +15,7 @@ import { useNavigate, useParams } from "react-router-dom";
 
 interface BookCardProps {
   bookVolume: GoogleBookVolume;
+  key: string;
 }
 function BookCard(props: BookCardProps) {
   const navigate = useNavigate();
@@ -29,6 +30,7 @@ function BookCard(props: BookCardProps) {
       direction={{ base: "column", sm: "row" }}
       overflow='hidden'
       borderRadius='0.625rem'
+      key={props.key}
     >
       <Stack>
         <Image

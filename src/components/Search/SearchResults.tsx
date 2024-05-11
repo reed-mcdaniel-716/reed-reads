@@ -1,35 +1,37 @@
 import React from "react";
-import { useParams } from "react-router-dom";
-import { Flex, HStack, VStack, Text } from "@chakra-ui/react";
-import { useAppSelector } from "../../hooks";
+import { Center, Heading, VStack } from "@chakra-ui/react";
 import "./SearchResults.css";
 import BookCard from "../BookCard/BookCard";
 import { GoogleBookVolume } from "../../utils/types";
 
-function SearchResults() {
-  // TODO: refetch data on refresh
-  const { searchQuery } = useParams();
-  const bookVolumes: GoogleBookVolume[] = useAppSelector(
-    (state) => state.search.bookVolumes
-  );
+interface SearchResultsProps {
+  bookVolumes: GoogleBookVolume[];
+}
+function SearchResults({ bookVolumes }: SearchResultsProps) {
   const bookCards = bookVolumes.map((volume: GoogleBookVolume) => {
-    return <BookCard bookVolume={volume} />;
+    return <BookCard bookVolume={volume} key={volume.id} />;
   });
-  return (
-    <HStack bg='brand.ash_gray' align={"top"}>
-      <Flex id='search_text_frame'>
-        <VStack id='search_text_box'>
-          {/* I want this text right justified... */}
-          <Text fontSize='md' fontWeight={800} color='brand.black_olive'>
-            {`Results for: ${searchQuery}`}
-          </Text>
-        </VStack>
-      </Flex>
+
+  if (bookCards.length > 0) {
+    return (
       <VStack spacing='1rem' id='card_tray' color='brand.seasalt'>
         {bookCards}
       </VStack>
-    </HStack>
-  );
+    );
+  } else {
+    return (
+      <Center>
+        <VStack>
+          <Heading as='h1' size='xl'>
+            Sorry, no books returned.
+          </Heading>
+          <Heading as='h2' size='lg'>
+            Please try another search.
+          </Heading>
+        </VStack>
+      </Center>
+    );
+  }
 }
 
 export default SearchResults;

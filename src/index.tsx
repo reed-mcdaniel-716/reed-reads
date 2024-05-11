@@ -17,7 +17,7 @@ import { Provider } from "react-redux";
 import App from "./App";
 import ErrorPage from "./components/Error/ErrorPage";
 import NavBarWrapper from "./components/NavBar/NavBarWrapper";
-import SearchResults from "./components/Search/SearchResults";
+import SearchResultsWrapper from "./components/Search/SearchResultsWrapper";
 import ResultDetails from "./components/BookDetail/BookDetail";
 
 const colors = {
@@ -53,7 +53,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/searchResults/:searchQuery",
-        element: <SearchResults />,
+        element: <SearchResultsWrapper />,
       },
       {
         path: "/searchResults/:searchQuery/:bookId/details",
